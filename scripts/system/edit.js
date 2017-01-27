@@ -466,7 +466,9 @@ var toolBar = (function () {
             return;
         }
         if (active && !Entities.canRez() && !Entities.canRezTmp()) {
-            Window.notifyEditError(INSUFFICIENT_PERMISSIONS_ERROR_MSG);
+            // Window.notifyEditError(INSUFFICIENT_PERMISSIONS_ERROR_MSG);
+            DialogsManager.toggleLoginDialog();
+            print("testing login window popup")
             return;
         }
         Messages.sendLocalMessage("edit-events", JSON.stringify({

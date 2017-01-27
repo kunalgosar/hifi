@@ -19,6 +19,7 @@ class DialogsManagerScriptingInterface : public QObject {
 public:
     DialogsManagerScriptingInterface();
     Q_INVOKABLE void showFeed();
+    Q_INVOKABLE void showLoginDialog();
 
 public slots:
     void toggleAddressBar();

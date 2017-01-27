@@ -29,5 +29,10 @@ void DialogsManagerScriptingInterface::toggleAddressBar() {
 
 void DialogsManagerScriptingInterface::showFeed() {
     QMetaObject::invokeMethod(DependencyManager::get<DialogsManager>().data(),
-        "showFeed", Qt::QueuedConnection);
+                              "showFeed", Qt::QueuedConnection);
+}
+
+void DialogsManagerScriptingInterface::showLoginDialog() {
+    QMetaObject::invokeMethod(DependencyManager::get<DialogsManager>().data(),
+                              "showLoginDialog", Qt::QueuedConnection);
 }

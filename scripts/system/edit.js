@@ -466,9 +466,8 @@ var toolBar = (function () {
             return;
         }
         if (active && !Entities.canRez() && !Entities.canRezTmp()) {
-            // Window.notifyEditError(INSUFFICIENT_PERMISSIONS_ERROR_MSG);
-            DialogsManager.toggleLoginDialog();
-            print("testing login window popup")
+            DialogsManager.showLoginDialog();
+            Window.notifyEditError(INSUFFICIENT_PERMISSIONS_ERROR_MSG);
             return;
         }
         Messages.sendLocalMessage("edit-events", JSON.stringify({
@@ -1232,6 +1231,7 @@ function getPositionToImportEntity() {
 }
 function importSVO(importURL) {
     if (!Entities.canRez() && !Entities.canRezTmp()) {
+        DialogsManager.showLoginDialog();
         Window.notifyEditError(INSUFFICIENT_PERMISSIONS_IMPORT_ERROR_MSG);
         return;
     }

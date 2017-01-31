@@ -466,7 +466,9 @@ var toolBar = (function () {
             return;
         }
         if (active && !Entities.canRez() && !Entities.canRezTmp()) {
-            DialogsManager.showLoginDialog();
+            if (!Account.isLoggedIn()) {
+                DialogsManager.showLoginDialog();
+            }
             Window.notifyEditError(INSUFFICIENT_PERMISSIONS_ERROR_MSG);
             return;
         }
@@ -1231,7 +1233,9 @@ function getPositionToImportEntity() {
 }
 function importSVO(importURL) {
     if (!Entities.canRez() && !Entities.canRezTmp()) {
-        DialogsManager.showLoginDialog();
+        if (!Account.isLoggedIn()) {
+            DialogsManager.showLoginDialog();
+        }
         Window.notifyEditError(INSUFFICIENT_PERMISSIONS_IMPORT_ERROR_MSG);
         return;
     }

@@ -6,8 +6,8 @@
 //  Persist toolbar by HRS 6/11/15.
 //  Copyright 2015 High Fidelity, Inc.
 //
-//  Press the dice button to throw some dice from the center of the screen. 
-//  Change NUMBER_OF_DICE to change the number thrown (Yahtzee, anyone?) 
+//  Press the dice button to throw some dice from the center of the screen.
+//  Change NUMBER_OF_DICE to change the number thrown (Yahtzee, anyone?)
 //
 //  Distributed under the Apache License, Version 2.0.
 //  See the accompanying file LICENSE or http://www.apache.org/licenses/LICENSE-2.0.html
@@ -78,6 +78,9 @@ var MAX_ANGULAR_SPEED = Math.PI;
 function shootDice(position, velocity) {
   if (!Entities.canRez()) {
     Window.alert(INSUFFICIENT_PERMISSIONS_ERROR_MSG);
+    if (!Account.isLoggedIn()) {
+        DialogsManager.showLoginDialog();
+    }
   } else {
     for (var i = 0; i < NUMBER_OF_DICE; i++) {
       dice.push(Entities.addEntity({
